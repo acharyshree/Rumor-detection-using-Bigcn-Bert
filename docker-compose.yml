@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  scrapper:
+    image: nagarajhebbar/selenium-twitter-scrapper:1.0.0  # Use your Docker Hub username and image name
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+  rumor:
+    image: nagarajhebbar/rumor:1.0.1
+    ports:
+      - "5001:5001"
+    networks:
+      - mynetwork
+
+  fakenews:
+    image: nagarajhebbar/fakenews:1.0.1
+    ports:
+      - "5002:5002"
+    networks:
+      - mynetwork
+  frontend:
+    image: nagarajhebbar/frontend:1.0.0
+    ports:
+      - "3000:3000"
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
